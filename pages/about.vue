@@ -5,7 +5,3 @@
     <NuxtLink to="/">Back to Home</NuxtLink>
   </div>
 </template>
-
-<script setup>
-// This is the script section for the about page
-</script>

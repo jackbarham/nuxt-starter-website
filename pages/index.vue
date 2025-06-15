@@ -5,7 +5,3 @@
     <NuxtLink to="/about">Go to About Page</NuxtLink>
   </div>
 </template>
-
-<script setup>
-  // This is the script section for the index page
-</script>

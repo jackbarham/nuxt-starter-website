@@ -1,1 +1,76 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('~/assets/fonts/Satoshi-Variable.woff2') format('woff2-variations'),
+       url('~/assets/fonts/Satoshi-Variable.woff') format('woff-variations'),
+       url('~/assets/fonts/Satoshi-Variable.eot') format('embedded-opentype');
+  /* font-weight: 300 900; */
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Custom breakpoints */
+  --breakpoint-xs: 430px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  
+  /* Custom colors */
+  --color-brand-red: #fb3a58;
+  --color-brand-yellow: #ffe267;
+  
+  /* Font family - Inter will be available as --font-inter */
+  --font-family-body: Inter, system-ui, sans-serif;
+  --font-family-heading: Satoshi, system-ui, sans-serif;
+}
+
+/* Base layer - apply fonts globally */
+@layer base {
+  html, body {
+    font-family: theme(--font-family-body);
+  }
+
+  /* Headings use Satoshi */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: theme(--font-family-heading);
+    font-weight: 800;
+  }
+}
+
+/* ICONS */
+.nuxt-icon {
+  height: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Typography plugin styles - manual implementation for v4 */
+@layer components {
+  .prose {
+    @apply text-gray-700 max-w-none;
+  }
+  
+  .prose blockquote p:first-of-type::before,
+  .prose blockquote p:first-of-type::after {
+    content: none;
+  }
+}
+
+/* Variant utilities that were in your v3 config */
+@layer utilities {
+  .odd\:order-1:nth-child(odd) {
+    order: 1;
+  }
+  
+  .even\:order-2:nth-child(even) {
+    order: 2;
+  }
+  
+  .last\:mb-0:last-child {
+    margin-bottom: 0;
+  }
+}

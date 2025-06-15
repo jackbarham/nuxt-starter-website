@@ -18,5 +18,16 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxt/scripts'
-  ]
+  ],
+  fonts: {
+    families: [
+      {
+        name: 'Inter',
+        provider: 'google',
+        weights: ['300', '400', '500', '600', '700'],
+        subsets: ['latin'],
+        display: 'swap'
+      },
+    ]
+  }
 })
