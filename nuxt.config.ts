@@ -36,12 +36,12 @@ export default defineNuxtConfig({
         lang: 'en',
       },
       title: 'Nuxt starter template',
-      // meta: [
-      //   { 
-      //     name: 'description', 
-      //     content: 'Web development, interface design and digital consultancy.'
-      //   }
-      // ],
+      meta: [
+        { 
+          name: 'description', 
+          content: 'Starter kit for Nuxt 3 projects with Tailwind CSS, Google Fonts, and more.'
+        }
+      ],
       // link: [
       //   { 
       //     rel: 'shortcut icon', 
