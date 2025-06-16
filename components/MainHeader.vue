@@ -1,5 +1,5 @@
 <template>
-  <header class="header fixed top-0 left-0 w-full z-50">
+  <header class="header fixed top-0 left-0 w-full z-50 transform transition-transform duration-300 ease-in-out" :class="headerVisible ? 'translate-y-0' : '-translate-y-full'">
     <!-- Main Header -->
     <div class="bg-gray-200 relative z-50">
       <div class="h-16 md:h-20 flex justify-between items-center px-4 md:px-8">
@@ -58,6 +58,11 @@ const appTitle = useRuntimeConfig().public.appTitle
 // Mobile menu state
 const isMobileMenuOpen = ref(false)
 
+// Header visibility state
+const headerVisible = ref(true)
+const lastScrollY = ref(0)
+const scrollDirection = ref('up')
+
 const pages = [
   {
     title: 'Home',
@@ -109,6 +114,41 @@ router.afterEach(() => {
 onUnmounted(() => {
   if (process.client) {
     document.body.classList.remove('overflow-hidden')
+    window.removeEventListener('scroll', handleScroll)
+  }
+})
+
+// Handle scroll for header show/hide
+const handleScroll = () => {
+  if (!process.client) return
+  
+  const currentScrollY = window.scrollY
+  
+  // At top of page - always show header
+  if (currentScrollY <= 50) {
+    headerVisible.value = true
+    lastScrollY.value = currentScrollY
+    return
+  }
+  
+  // Determine scroll direction
+  if (currentScrollY > lastScrollY.value) {
+    // Scrolling down - hide header
+    scrollDirection.value = 'down'
+    headerVisible.value = false
+  } else if (currentScrollY < lastScrollY.value) {
+    // Scrolling up - show header
+    scrollDirection.value = 'up'
+    headerVisible.value = true
+  }
+  
+  lastScrollY.value = currentScrollY
+}
+
+// Setup scroll listener
+onMounted(() => {
+  if (process.client) {
+    window.addEventListener('scroll', handleScroll, { passive: true })
   }
 })
 </script>
