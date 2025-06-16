@@ -1,9 +1,11 @@
 <template>
   <header class="header fixed top-0 left-0 w-full z-50 transform transition-transform duration-300 ease-in-out" :class="headerVisible ? 'translate-y-0' : '-translate-y-full'">
+    
     <!-- Main Header -->
     <div class="bg-gray-200 relative z-50">
       <div class="h-16 md:h-20 flex justify-between items-center px-4 md:px-8">
-        <!-- Logo/Title -->
+        
+        <!-- Title -->
         <h1 class="text-2xl md:text-3xl font-bold text-black">
           <NuxtLink to="/" @click="closeMobileMenu">{{ appTitle }}</NuxtLink>
         </h1>
@@ -25,15 +27,14 @@
           @click="toggleMobileMenu"
           class="md:hidden bg-gray-800 text-white px-3 py-2 rounded relative z-50"
           aria-label="Toggle mobile menu"
-        >
-          {{ isMobileMenuOpen ? 'Close' : 'Menu' }}
-        </button>
+        >{{ isMobileMenuOpen ? 'Close' : 'Menu' }}</button>
+        
       </div>
     </div>
     
     <!-- Mobile Menu -->
     <div 
-      class="md:hidden absolute left-0 w-full bg-gray-200 z-40 p-6 pt-8 transform transition-transform duration-300 ease-in-out"
+      class="absolute -z-10 left-0 w-full bg-gray-200 p-6 pt-8 transform transition-transform ease-in-out duration-200"
       :class="isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'"
       :style="{ top: '64px', height: 'calc(100vh - 64px)' }"
     >
@@ -43,12 +44,11 @@
             :to="page.url" 
             @click="closeMobileMenu"
             class="block text-2xl font-medium tracking-wide py-3 hover:text-gray-600 transition-colors"
-          >
-            {{ page.title }}
-          </NuxtLink>
+          >{{ page.title }} </NuxtLink>
         </li>
       </ul>
     </div>
+    
   </header>
 </template>
 
