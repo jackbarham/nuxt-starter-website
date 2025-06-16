@@ -1,5 +1,5 @@
 <template>
-  <header class="header relative z-50">
+  <header class="header fixed top-0 left-0 w-full z-50">
     <!-- Main Header -->
     <div class="bg-gray-200 relative z-50">
       <div class="h-16 md:h-20 flex justify-between items-center px-4 md:px-8">
@@ -33,7 +33,7 @@
     
     <!-- Mobile Menu -->
     <div 
-      class="md:hidden fixed left-0 w-full bg-gray-200 z-40 p-6 pt-8 transform transition-transform duration-300 ease-in-out"
+      class="md:hidden absolute left-0 w-full bg-gray-200 z-40 p-6 pt-8 transform transition-transform duration-300 ease-in-out"
       :class="isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'"
       :style="{ top: '64px', height: 'calc(100vh - 64px)' }"
     >
@@ -80,9 +80,35 @@ const pages = [
 // Mobile menu functions
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
+  updateBodyClass()
 }
 
 const closeMobileMenu = () => {
   isMobileMenuOpen.value = false
+  updateBodyClass()
 }
+
+// Lock/unlock body scroll
+const updateBodyClass = () => {
+  if (process.client) {
+    if (isMobileMenuOpen.value) {
+      document.body.classList.add('overflow-hidden')
+    } else {
+      document.body.classList.remove('overflow-hidden')
+    }
+  }
+}
+
+// Close menu when route changes
+const router = useRouter()
+router.afterEach(() => {
+  closeMobileMenu()
+})
+
+// Cleanup on unmount
+onUnmounted(() => {
+  if (process.client) {
+    document.body.classList.remove('overflow-hidden')
+  }
+})
 </script>
