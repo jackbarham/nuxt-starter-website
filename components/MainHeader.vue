@@ -58,13 +58,19 @@
           <NuxtLink 
             :to="page.url" 
             @click="closeMobileMenu"
-            class="block text-2xl font-medium tracking-wide py-3 hover:text-gray-600 transition-colors"
+            class="block text-3xl font-medium tracking-wide py-3 hover:text-gray-600 transition-colors"
           >{{ page.title }}</NuxtLink>
         </li>
       </ul>
 
       <!-- CTA button -->
-      <div class="absolute bottom-12 min-w-48">
+      <div 
+        class="absolute bottom-12 min-w-48 transform transition-opacity duration-[800ms] ease-in-out"
+        :class="isMobileMenuOpen ? 'opacity-100' : 'opacity-0'"
+        :style="{ 
+          transitionDelay: isMobileMenuOpen ? '400ms' : '0ms'
+        }"
+      >
         <CtaButton />
       </div>
       
