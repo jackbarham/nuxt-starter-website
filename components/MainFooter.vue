@@ -4,7 +4,7 @@
       <div class="lg:flex justify-between items-center md:flex-row-reverse layout-full">
         <ul class="flex justify-center lg:justify-normal mr-4 lg:mr-0 mb-16 lg:mb-0">
           <li v-for="social in socials" :key="social.id" class="ml-4">
-            <NuxtLink :to="social.url" target="_blank" class="block bg-white hover:bg-brand-red p-4 rounded-lg" :aria-label="`Jack Barham on ${social.name}`">
+            <NuxtLink :to="social.url" target="_blank" class="block bg-white hover:bg-brand-red p-4 rounded-full" :aria-label="`${appTitle} on ${social.name}`">
               <span class="block h-10 w-10">
                 <component :is="icons[social.id]" filled class="text-black" />
               </span>
@@ -15,7 +15,7 @@
           <h1 class="text-2xl mb-1">
             <NuxtLink to="/" class="hover:text-brand-red">{{ appTitle }}</NuxtLink>
           </h1>
-          <p class="text-sm font-light mb-4 max-w-56 md:max-w-full mx-auto">Starter kit for Nuxt 3 projects with Tailwind CSS and more.</p>
+          <p class="text-sm font-light mb-6 max-w-56 md:max-w-full mx-auto">Starter kit for Nuxt 3 projects with Tailwind CSS and more.</p>
           <p class="text-xs text-gray-400">Copyright &copy; {{ year }} Airbox Media Ltd</p>
         </div>
       </div>
