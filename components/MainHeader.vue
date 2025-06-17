@@ -65,10 +65,11 @@
 
       <!-- CTA button -->
       <div 
-        class="absolute bottom-12 min-w-48 transform transition-opacity duration-[800ms] ease-in-out"
+        class="absolute bottom-12 min-w-48 transform transition-opacity duration-[700ms] ease-in-out"
         :class="isMobileMenuOpen ? 'opacity-100' : 'opacity-0'"
         :style="{ 
-          transitionDelay: isMobileMenuOpen ? '400ms' : '0ms'
+          transitionDelay: isMobileMenuOpen ? '100ms' : '0ms',
+          transitionDuration: isMobileMenuOpen ? '700ms' : '150ms'
         }"
       >
         <CtaButton />
