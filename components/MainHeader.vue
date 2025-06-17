@@ -58,7 +58,7 @@
           <NuxtLink 
             :to="page.url" 
             @click="closeMobileMenu"
-            class="block text-3xl font-medium tracking-wide py-3 hover:text-gray-600 transition-colors"
+            class="block text-3xl font-medium py-3 hover:text-gray-600 transition-colors"
           >{{ page.title }}</NuxtLink>
         </li>
       </ul>
