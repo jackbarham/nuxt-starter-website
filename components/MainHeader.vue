@@ -30,7 +30,7 @@
         <!-- Mobile Menu Button -->
         <button 
           @click="toggleMobileMenu"
-          class="md:hidden bg-gray-800 text-white px-3 py-2 rounded relative z-50"
+          class="md:hidden relative z-50 px-4 py-2 border border-gray-400 text-sm text-gray-700 rounded-full"
           aria-label="Toggle mobile menu"
           :aria-expanded="isMobileMenuOpen"
           :aria-controls="isMobileMenuOpen ? 'mobile-navigation' : undefined"
@@ -43,11 +43,11 @@
     <nav 
       aria-label="Mobile navigation"
       :id="isMobileMenuOpen ? 'mobile-navigation' : undefined"
-      class="absolute -z-10 left-0 w-full bg-gray-200 p-6 pt-8 transform transition-transform ease-in-out duration-200"
+      class="absolute -z-10 left-0 w-full bg-gray-200 p-16 transform transition-transform ease-in-out duration-200"
       :class="isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'"
       :style="{ top: '64px', height: 'calc(100vh - 64px)' }"
     >
-      <ul class="space-y-6">
+      <ul class="space-y-4">
         <li v-for="page in pages" :key="page.url">
           <NuxtLink 
             :to="page.url" 
