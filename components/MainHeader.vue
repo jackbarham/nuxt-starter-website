@@ -45,7 +45,7 @@
       :id="isMobileMenuOpen ? 'mobile-navigation' : undefined"
       class="absolute -z-10 left-0 w-full bg-gray-200 p-12 transform transition-transform ease-in-out duration-200"
       :class="isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'"
-      :style="{ top: '64px', height: 'calc(100vh - 64px)' }"
+      :style="{ top: '64px', height: 'calc(100dvh - 64px)' }"
     >
       <ul class="space-y-4">
         <li 
