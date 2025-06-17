@@ -124,6 +124,7 @@ onUnmounted(() => {
   if (process.client) {
     document.body.classList.remove('overflow-hidden')
     window.removeEventListener('scroll', handleScroll)
+    window.removeEventListener('resize', handleResize)
   }
 })
 
@@ -154,10 +155,18 @@ const handleScroll = () => {
   lastScrollY.value = currentScrollY
 }
 
-// Setup scroll listener
+// Handle window resize to close mobile menu
+const handleResize = () => {
+  if (isMobileMenuOpen.value) {
+    closeMobileMenu()
+  }
+}
+
+// Setup scroll and resize listeners
 onMounted(() => {
   if (process.client) {
     window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleResize)
   }
 })
 </script>
