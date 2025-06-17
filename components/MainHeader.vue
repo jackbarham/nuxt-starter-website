@@ -62,6 +62,11 @@
           >{{ page.title }}</NuxtLink>
         </li>
       </ul>
+
+      <!-- CTA button -->
+      <div class="absolute bottom-12 min-w-48">
+        <CtaButton />
+      </div>
       
     </nav>
 
