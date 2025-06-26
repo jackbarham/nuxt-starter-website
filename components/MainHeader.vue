@@ -53,7 +53,7 @@
           :key="page.url"
           class="transform transition-all duration-300 ease-in-out"
           :class="isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'"
-          :style="{ transitionDelay: isMobileMenuOpen ? `${index * 170}ms` : '0ms' }"
+          :style="{ transitionDelay: isMobileMenuOpen ? `${index * 200}ms` : '0ms' }"
         >
           <NuxtLink 
             :to="page.url" 
@@ -68,11 +68,11 @@
         class="absolute bottom-12 min-w-48 transform transition-opacity duration-[700ms] ease-in-out"
         :class="isMobileMenuOpen ? 'opacity-100' : 'opacity-0'"
         :style="{ 
-          transitionDelay: isMobileMenuOpen ? '100ms' : '0ms',
+          transitionDelay: isMobileMenuOpen ? '200ms' : '0ms',
           transitionDuration: isMobileMenuOpen ? '700ms' : '150ms'
         }"
       >
-        <CtaButton />
+        <CtaButton link="/contact" text="Button text" />
       </div>
       
     </nav>
@@ -123,7 +123,7 @@ const closeMobileMenu = () => {
 
 // Lock/unlock body scroll
 const updateBodyClass = () => {
-  if (process.client) {
+  if (import.meta.client) {
     if (isMobileMenuOpen.value) {
       document.body.classList.add('overflow-hidden')
     } else {
@@ -140,7 +140,7 @@ router.afterEach(() => {
 
 // Cleanup on unmount
 onUnmounted(() => {
-  if (process.client) {
+  if (import.meta.client) {
     document.body.classList.remove('overflow-hidden')
     window.removeEventListener('scroll', handleScroll)
     window.removeEventListener('resize', handleResize)
@@ -183,7 +183,7 @@ const handleResize = () => {
 
 // Setup scroll and resize listeners
 onMounted(() => {
-  if (process.client) {
+  if (import.meta.client) {
     window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', handleResize)
   }
