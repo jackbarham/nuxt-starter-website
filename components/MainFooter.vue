@@ -2,9 +2,9 @@
   <footer class="footer">
     <div class="bg-gray-950 py-16 md:py-20">
       <div class="lg:flex justify-between items-center md:flex-row-reverse layout-full">
-        <ul class="flex justify-center lg:justify-normal mr-4 lg:mr-0 mb-16 lg:mb-0">
-          <li v-for="social in socials" :key="social.id" class="ml-4">
-            <NuxtLink :to="social.url" target="_blank" class="block bg-white hover:bg-brand-red p-4 rounded-full" :aria-label="`${appTitle} on ${social.name}`">
+        <ul class="flex justify-center lg:justify-normal lg:mr-0 mb-16 lg:mb-0">
+          <li v-for="social in socials" :key="social.id" class="px-2 md:p-0 md:ml-4">
+            <NuxtLink :to="social.url" target="_blank" class="block bg-white hover:bg-brand-red p-4 md:p-5 rounded-full" :aria-label="`${appTitle} on ${social.name}`">
               <span class="block h-10 w-10">
                 <component :is="icons[social.id]" filled class="text-black" />
               </span>
